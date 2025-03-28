@@ -1,42 +1,40 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@import "tailwindcss";
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+@theme {
+  --color-primary: #00a176;
+  --color-active: #004d39;
+  --color-natural: #f1f1f1;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  --color-buttonPrimary: #00a176;
+  --color-buttonDisabled: #dfdfdf;
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+  --color-text: #282828;
+  --color-textDescription: #797979;
+  --color-textWarning: #ff7657;
+  --color-textLight: #cbcbcb;
+  --color-textProfile: #474747;
 
-.card {
-  padding: 2em;
-}
+  --color-placeholderPrimary: #fff;
+  --color-background: #ffffff;
+  --color-border: #cbcbcb;
+  --color-borderInput: #6b7280;
+  --color-borderSelect: #e5e7eb;
+  --color-borderBottom: #f3f4f6;
+  --color-borderCheckbox: #d1d5db;
+  --color-borderFooter: #e8e9eb;
+  --color-borderFeed: #e8e9eb;
+  --color-footerBackground: #fcfcfc;
 
-.read-the-docs {
-  color: #888;
+  --color-chipBorder: #a6cfc4;
+  --color-chipActive: #f6fffd;
+
+  --color-toastBackground: #a4a4a4;
+
+  --color-modalBorderBottom: #f6f6f6;
+
+  --color-iconBorder: #797977;
+  --color-headerBottom: #e8e9eb;
+  --color-selectActive: #f0fdf4;
+
+  --color-mainBackground: #f6f6f6;
 }
