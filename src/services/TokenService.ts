@@ -27,7 +27,7 @@ export const TokenService = {
     accessToken: string | undefined,
     refreshToken: string | undefined
   ) {
-    localStorage.setItem(TOKEN_KEYS.ACCESS, accessToken);
+    localStorage.setItem(TOKEN_KEYS.ACCESS, accessToken || "#");
     API.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
     if (refreshToken) {
       localStorage.setItem(TOKEN_KEYS.REFRESH, refreshToken);
