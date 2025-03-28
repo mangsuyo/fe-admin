@@ -1,13 +1,18 @@
 import { create } from "zustand";
+import { TokenService } from "../services/TokenService";
+import API from "../repository/API";
 
 interface AuthState {
   isAuthenticated: boolean;
-  login: () => void;
-  logout: () => void;
+  checkAuth: () => Promise<void>;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
-  login: () => set({ isAuthenticated: true }),
-  logout: () => set({ isAuthenticated: false }),
+  checkAuth: async () => {
+    const tokenExists = await TokenService.isTokenPresent();
+    const accessToken = await TokenService.getAccessToken();
+    API.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    set({ isAuthenticated: tokenExists });
+  },
 }));
