@@ -10,7 +10,7 @@ import Feed from "../pages/feed/Feed";
 import Certification from "../pages/certification/Certification";
 import Report from "../pages/report/Report";
 import ReportPost from "../pages/report/ReportPost";
-import ReportComent from "../pages/report/ReportComent";
+import ReportComent from "../pages/report/ReportComment";
 import ReportChat from "../pages/report/ReportChat";
 
 const Router = () => {

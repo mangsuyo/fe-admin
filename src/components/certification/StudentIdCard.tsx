@@ -18,13 +18,13 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4 shadow flex items-center justify-center">
       <div className="flex-col">
-        <h3 className="text-2xl font-semibold ">
+        <h3 className="text-3xl font-semibold ">
           🏫 {getUniversityName(card.university)}
         </h3>
         <img
           src={card.imageUrl}
           alt="학생증"
-          className="w-full mr-4 rounded-lg cursor-pointer max-h-[700px]"
+          className="w-full mt-7 rounded-xl cursor-pointer max-h-[700px] border"
           onClick={() => onImageClick && onImageClick(card.imageUrl)}
         />
         <div>

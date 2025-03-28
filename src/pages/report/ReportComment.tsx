@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react";
 import ReportRepository, {
-  ChatroomReport,
+  CommentReport,
 } from "../../repository/ReportRepository";
 import BanModal from "../../components/ban/BanModal";
-import ChatRoomItem from "../../components/report/ChatRoomItem";
 
-export default function ReportChat() {
-  const [reports, setReports] = useState<ChatroomReport[]>([]);
+export default function ReportComent() {
+  const [reports, setReports] = useState<CommentReport[]>([]);
   const [banModalVisible, setBanModalVisible] = useState(false);
   const [selectedStudentIdForBan, setSelectedStudentIdForBan] = useState<
     number | null
   >(null);
 
   useEffect(() => {
-    ReportRepository.getReportsByType("CHATROOM")
+    ReportRepository.getReportsByType("COMMENT")
       .then((data) => {
-        setReports(data as ChatroomReport[]);
+        setReports(data as CommentReport[]);
       })
       .catch((error) => {
-        console.error("Error fetching chatroom reports", error);
+        console.error("Error fetching comment reports", error);
       });
   }, []);
 
@@ -33,7 +32,6 @@ export default function ReportChat() {
     }
   };
 
-  // 채팅 신고의 경우, reportedUserId를 정지할 학생의 id로 사용합니다.
   const openBanModal = (reportedUserId: number) => {
     setSelectedStudentIdForBan(reportedUserId);
     setBanModalVisible(true);
@@ -50,14 +48,13 @@ export default function ReportChat() {
       return;
     }
     if (selectedStudentIdForBan === null) return;
-
     try {
       const res = await ReportRepository.banUser(
         selectedStudentIdForBan,
         days,
         banReason
       );
-      // 동일 학생에 대한 신고 항목들을 모두 삭제
+      // 동일 학생에 대한 신고 항목들을 모두 필터링 후 삭제 처리
       const reportsToDelete = reports.filter(
         (report) => report.reportedUserId === selectedStudentIdForBan
       );
@@ -85,27 +82,19 @@ export default function ReportChat() {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="flex items-center mb-10">
-        <h1 className="text-4xl font-bold">🪣</h1>
-        <h1 className="text-4xl font-bold ml-3">신고된 채팅방</h1>
+        <h1 className="text-4xl font-bold">💬</h1>
+        <h1 className="text-4xl font-bold ml-3">신고된 댓글</h1>
       </div>
-      <h1 className="text-lg font-semibold mb-8 text-gray-700">
-        오른쪽이 신고 당한 사람입니다.
-      </h1>
       {reports.map((report) => (
         <div
           key={report.id}
           className="bg-white border border-gray-200 rounded-lg p-4 mb-6 shadow-sm hover:shadow-md transition-shadow duration-200 ease-in-out"
         >
-          <p className="text-red-500 text-xl font-semibold mb-5">
+          <p className="text-2xl font-medium">{report.content}</p>
+          <p className="mt-3 text-red-500 font-semibold">
             신고 사유: {report.reason}
           </p>
-          <div className="mt-4">
-            <ChatRoomItem
-              roomId={report.reportedId}
-              reportedUserId={report.reportedUserId}
-            />
-          </div>
-          <div className="space-x-4 mt-6">
+          <div className="mt-4 flex space-x-4">
             <button
               onClick={() => handleDeleteReport(report.id)}
               className="px-4 py-2 bg-primary text-white hover:bg-[#00916A] rounded-lg"

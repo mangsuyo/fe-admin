@@ -1,7 +1,6 @@
 // src/pages/Home.tsx
 import { Link, useLocation, Outlet } from "react-router-dom";
 import "../styles/effects.css";
-import { TokenService } from "../services/TokenService";
 
 const Home = () => {
   const location = useLocation();
@@ -31,7 +30,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex w-full h-screen bg-gray-50 font-sans">
+    <div className="flex w-full h-full bg-gray-50 font-sans">
       {/* 사이드바 */}
       <aside className="min-w-64 bg-white border-r border-gray-200 p-6">
         <nav className="mt-8">
@@ -77,9 +76,8 @@ const Home = () => {
         </nav>
       </aside>
 
-      {/* 본문 영역 (중첩 라우트 Outlet) */}
-      <main className="flex flex-row  justify-center w-full ">
-        <div className="bg-white w-[920px] p-18 rounded-lg shadow">
+      <main className="flex flex-row justify-center w-full h-full">
+        <div className="bg-white w-[920px] p-18 rounded-lg  h-full">
           <Outlet />
         </div>
       </main>

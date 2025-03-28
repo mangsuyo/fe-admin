@@ -59,7 +59,7 @@ export default function Certification() {
   };
 
   return (
-    <div className="">
+    <div className="max-w-4xl mx-auto p-4">
       <div className="flex items-center mb-10">
         <h1 className="text-4xl font-bold">✅</h1>
         <h1 className="text-4xl font-bold ml-3">인증</h1>
