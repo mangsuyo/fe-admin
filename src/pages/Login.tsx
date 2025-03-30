@@ -16,6 +16,7 @@ const Login = () => {
 
   useEffect(() => {
     checkAuth();
+    console.log("CHECK!");
   }, [checkAuth]);
 
   if (isAuthenticated) {
