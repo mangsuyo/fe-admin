@@ -4,5 +4,9 @@
       "source": "/api/(.*)",
       "destination": "https://buddyya.store/$1"
     }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
   ]
 }
