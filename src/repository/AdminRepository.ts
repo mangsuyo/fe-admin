@@ -1,4 +1,4 @@
-import { UserState } from "../store/UserStore";
+import { UserState } from "../store/useUserStore";
 import API from "./API";
 
 class AdminRepository {

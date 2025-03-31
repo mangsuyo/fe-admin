@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "../App.css";
 import AdminRepository from "../repository/AdminRepository";
-import { removeNullValues, useUserStore } from "../store/UserStore";
+import { removeNullValues, useUserStore } from "../store/useUserStore";
 import { TokenService } from "../services/TokenService";
-import { useAuthStore } from "../store/AuthStore";
+import { useAuthStore } from "../store/useAuthStore";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ const Login = () => {
 
   useEffect(() => {
     checkAuth();
+    console.log("CHECK!");
   }, [checkAuth]);
 
   if (isAuthenticated) {

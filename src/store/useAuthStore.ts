@@ -12,7 +12,9 @@ export const useAuthStore = create<AuthState>((set) => ({
   checkAuth: async () => {
     const tokenExists = await TokenService.isTokenPresent();
     const accessToken = await TokenService.getAccessToken();
-    API.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    if (accessToken) {
+      API.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+    }
     set({ isAuthenticated: tokenExists });
   },
 }));
