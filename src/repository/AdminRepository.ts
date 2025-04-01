@@ -5,7 +5,6 @@ class AdminRepository {
   async checkAdmin(userId: string): Promise<{ isAdminAccount: boolean }> {
     const { data } = await API.post("/phone-auth/check-admin-account", {
       phoneNumber: userId,
-      udId: null,
     });
     return data;
   }
@@ -28,6 +27,7 @@ class AdminRepository {
     const { data } = await API.post("/phone-auth/verify-code", {
       phoneNumber: userId,
       code: password,
+      udId: null,
     });
     return data;
   }
