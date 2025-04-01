@@ -47,7 +47,7 @@ export default function Certification() {
     if (selectedCardIdForRejection === null) return;
     await CertificationRepository.verifyStudentIdCard({
       id: selectedCardIdForRejection,
-      isApproved: true,
+      isApproved: false,
       rejectionReason: reason,
     });
 
